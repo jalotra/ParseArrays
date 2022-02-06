@@ -1,5 +1,5 @@
 
-from n_array_tree import NArrayTree
+from .n_array_tree import NArrayTree
 
 class ParseMatrices:
     # Data is a big chunk of matrix data.
@@ -9,7 +9,6 @@ class ParseMatrices:
     def __init__(self, data : str):
         self.data = data
         assert isinstance(self.data, str)
-
         self.types = 3
         self.open_parentheses = ['{', '[', '(']
         self.closed_parentheses = ['}', ']', ')']
@@ -35,7 +34,9 @@ class ParseMatrices:
     def parse_matrix(self):
         if not self.is_balanced():
             raise Exception(f"Data {self.data} provided is not balanced.")
-        
+        elif len(self.data) == 0:
+            return []
+
         root = NArrayTree([])
         levels = [root]
         current_level = 0
@@ -57,7 +58,8 @@ class ParseMatrices:
         return root.parse_tree()[0]
 
 if __name__ == "__main__":
-    data = "{name,{name,{jalotra, shivam, machine}}}"
+    # data = "{name,{name,{jalotra, shivam, machine}}}"
+    data = "{}"
     parse_matrix = ParseMatrices(data)
     from pprint import pprint
     pprint(parse_matrix.parse_matrix())
