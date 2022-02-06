@@ -38,9 +38,10 @@ The crux of the problem is to parse this `.data` into a `list([])` which can be 
 - I have been leetcoding for sometime now, so I wanted to see if I could be able to come up with some algorithm to solve this problem on my own (read without looking how ast.literal_eval) works.
 
 - Algorithm : 
-    - For every open_parentheses this about a new node in a tree being created.
+    - We start with a root node.
+    - And for every open_parentheses a new node in this tree rooted at Root is created.
     - Now the structure that you describe for this node can be used recursively. I call this structure `NArrayTree` 
-    - And you can keep on adding the current value (string) this `NArrayTree` can hold, like if the example was `{
+    - And you can keep on adding the current value (string) this `NArrayTree` node can hold, like if the example was `{
         jalotra, 
         {
             ... something here 
